@@ -1,0 +1,34 @@
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% if adverts %}
+  <ul class="advert-list list-inline text-center">
+    {% for advert in adverts %}
+      <li>
+        {% if advert.url %}
+          <a href="{{ advert.url }}">
+        {% elif advert.page %}
+          <a href="{% pageurl advert.page %}">
+        {% endif %}
+          {{ advert.text }}
+        {% if advert.url or advert.page %}</a>{% endif %}
+      </li>
+      {% if not forloop.last %}<li><strong>·</strong></li>{% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+    <!-- ################################################################### -->
+    <!-- ## ADVERT SECTION                                                ## -->
+    <!-- ################################################################### -->
+    <div class="block app-high-praise" style="background-image: url({% static 'img/founder-001.jpg' %});">
+        <div class="container">
+          <div class="row app-align-center py-3">
+            <div class="col-sm-5 push-sm-7 py-5">
+              <h6 class="text-muted text-uppercase mb-2">What people are saying</h6>
+              <h3 class="mb-4">“RadHR is amazing. Time spent researching staff was a major part of my week. I now know who in my lists is ready to move and when.”</h3>
+              <p class="mb-4 text-muted">Michelle, Founder</p>
+            </div>
+          </div>
+      </div>
+    </div>

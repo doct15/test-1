@@ -1,0 +1,29 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## META ATTRIBUTES                                               ## -->
+    <!-- ################################################################### -->
+    {% block head_title %}{{ block.super }} | {% trans "Account Inactive" %}{% endblock %}
+
+    <!-- ################################################################### -->
+    <!-- ## MAIN CONTENT SECTION                                          ## -->
+    <!-- ################################################################### -->
+    {% block content %}
+    <div class="block block-secondary">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-6 col-sm-offset-3">
+            <h2 class="text-uppercase">{% trans "Account Inactive" %}</h2>
+            <p>{% trans "This account is inactive." %}</p>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

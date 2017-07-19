@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load account %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## MAIN CONTENT SECTION                                          ## -->
+    <!-- ################################################################### -->
+    <div class="block block-secondary">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-6 col-sm-offset-3">
+            {% user_display user as user_display %}
+            <h2 class="text-uppercase">{% trans "Note" %}:</h2>
+            <p>{% blocktrans %}You are already logged in as {{ user_display }}.{% endblocktrans %}</p>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>

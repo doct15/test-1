@@ -1,0 +1,63 @@
+{% load wagtailcore_tags %}
+{% load static %}
+{% load user_tags %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## MENU NAVIGATION: TOP NAV                                      ## -->
+    <!-- ################################################################### -->
+    <div class="container pt-3">
+      <nav class="navbar navbar-light navbar-toggleable-sm fixed-top text-uppercase app-navbar">
+
+          <!-- ## MOBILE TOGGLE BUTTON.                                   ## -->
+          <button
+            class="navbar-toggler navbar-toggler-right hidden-md-up"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- ## RADHR LOGO.                                             ## -->
+          <a class="navbar-brand mr-auto pl-2" href="/"><img src="{% static 'img/rdhr-logo-dark@2x.png' %}" height="30px" /></a>
+
+          <!-- ## BUY/REFER: AUTHENTICATED NAV BUTTON.                    ## -->
+          {% if user.is_authenticated and request.user|has_group:"Administrator" %}
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-link px-3 "><a class="btn btn-info" href="/refer/">Refer a friend!</a></li>
+            </ul>
+          </div>
+
+          {% elif user.is_authenticated %}
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-link px-3 "><a class="btn btn-success" href="/pricing/">Buy Now!</a></li>
+              <li class="nav-link px-3 "><a class="nav-link" href="/">Trial ends X day(s).</a></li>
+            </ul>
+          </div>
+
+          {% endif %}
+
+          <!-- ## MAIN MENU NAVIGATION: TOP NAV.                          ## -->
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-link px-3 "><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-link px-3 "><a class="nav-link" href="#">About</a></li>
+              <li class="nav-link px-3 "><a class="nav-link" href="#">Pricing</a></li>
+              <li class="nav-link px-3 "><a class="nav-link" href="#">Contact</a></li>
+
+              <!-- ## MAIN MENU: LOGIN/LOGOUT.                            ## -->
+              {% if request.user.is_authenticated %}
+                <li class="nav-link px-3 "><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+              {% else %}
+                <li class="nav-link px-3 "><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+              {% endif %}
+            </ul>
+          </div><!--/.nav-collapse -->
+
+      </nav>
+    </div>

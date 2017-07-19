@@ -1,0 +1,31 @@
+{% extends "base_fe.html" %}
+{% load crispy_forms_tags %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## CONTENT BLOCK.                                                ## -->
+    <!-- ################################################################### -->
+    {% block main_title %}
+      RadHR Watchlist
+    {% endblock main_title %}
+
+    {% block main_subtitle %}
+      Welcome to your Human Resource alert system.
+    {% endblock main_subtitle %}
+
+    {% block content %}
+    <div class="block block-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 class="text-uppercase mb-4">Add to Watchlist.</h2>
+            <form method="POST" action="{% url 'lists:create' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" class="btn btn-success" value="Save"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}

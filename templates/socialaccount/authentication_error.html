@@ -1,0 +1,26 @@
+{% extends "socialaccount/base.html" %}
+{% load i18n %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## META ATTRIBUTES                                               ## -->
+    <!-- ################################################################### -->
+    {% block head_title %}{{ block.super }} | {% trans "Social Network Login Failure" %}{% endblock %}
+
+    <!-- ################################################################### -->
+    <!-- ## MAIN CONTENT SECTION                                          ## -->
+    <!-- ################################################################### -->
+    {% block content %}
+    <div class="block block-secondary">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-6 col-sm-offset-3">
+            <h2 class="text-uppercase">{% trans "Social Network Login Failure" %}</h2>
+            <p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,206 @@
+/*
+ * Minimal Application level overrides
+ * (things that dont make sense in a toolkit :)
+ * copyright @colossal 2015
+ */
+
+.block {
+ overflow: hidden;
+}
+
+
+/* navbar */
+.app-navbar {
+  background-color: #FFFFFF;
+  font-size: 13px;
+  letter-spacing: .15em;
+  border-bottom: 1px solid #E2E2E2;
+}
+.app-navbar .navbar-brand {
+  font-size: 13px;
+}
+
+.app-navbar .nav-item + .nav-item {
+  margin-left: 15px;
+}
+
+.app-navbar .collapsing .nav-item + .nav-item,
+.app-navbar .collapse.show .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+a.nav-link:hover {
+  color: #00af4c !important;
+}
+
+/* header block */
+.app-header h1 {
+  color: #222222;
+  font-size: 2.5em;
+  font-weight: 400;
+}
+
+.app-header .lead {
+  font-weight: 400 !important;
+  color: #545454 !important;
+  background-color: #f1f11f;
+  padding: 15px;
+  -khtml-opacity:.70;
+  -moz-opacity:.70;
+  -ms-filter:"alpha(opacity=70)";
+  filter:alpha(opacity=70);
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.7);
+  opacity:.70;
+}
+
+.app-header button {
+  font-weight: 400;
+}
+
+
+
+/* intro block */
+.app-block-intro {
+  padding-top: 20px;
+}
+.app-block-intro img {
+  width: 80%;
+  margin-bottom: -45%;
+}
+
+
+/* detail view dashboard */
+.activitysummary {
+  background: #F2F2F2 !important;
+}
+
+.activitysummary .card {
+  background: #F2F2F2 !important;
+}
+
+
+/* block img */
+.app-block-game img,
+.app-block-stats img {
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .app-block-game-img {
+    transform: scale(1.5) !important;
+  }
+}
+
+/* iphone block */
+.app-iphone-block {
+  padding-bottom: 60px;
+}
+@media (min-width: 768px) {
+  .app-iphone-block {
+    padding-bottom: 0;
+  }
+}
+
+
+/* stats hr */
+.app-block-stats hr {
+  width: calc(80% + 60px);
+}
+
+/* design block */
+.app-block-design > .container > .row {
+  z-index: 2;
+}
+.app-pos-r {
+  position: relative;
+}
+
+.app-block-design-img {
+  margin-top: -60px;
+  margin-left: -450px;
+  float: left;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .app-block-design-img {
+    margin-top: -220px;
+    margin-left: 0;
+  }
+}
+
+/* footer block */
+.app-block-footer {
+  background-color: rgb(27, 28, 29);
+  color: #444;
+  color: rgba(116, 119, 123, .5);
+}
+
+
+/* transforms */
+.app-translate-15 {
+  -webkit-transform: translateY(15px);
+      -ms-transform: translateY(15px);
+          transform: translateY(15px);
+}
+.app-translate-50 {
+  -webkit-transform: translateY(50px);
+      -ms-transform: translateY(50px);
+          transform: translateY(50px);
+}
+.app-translate-5 {
+  -webkit-transform: translateY(5%);
+      -ms-transform: translateY(5%);
+          transform: translateY(5%);
+}
+.app-translate-10 {
+  -webkit-transform: translateY(10%);
+      -ms-transform: translateY(10%);
+          transform: translateY(10%);
+}
+
+
+/* Footer */
+.app-footer {
+  border-top: 1px solid #E2E2E2;
+  padding-top: 40px !important;
+  padding-bottom: 10px !important;
+}
+
+a.footer-link:hover {
+  color: #00af4c;
+}
+
+/* Made In Melbourne */
+.app-footerlight {
+  background-color: #FFFFFF;
+  color: #E2E2E2 !important;
+  padding-top: 30px !important;
+  padding-top: 10px !important;
+  font-size: .8em;
+}
+
+.pulse {
+    color: #FF0000;
+    -webkit-animation: pulse 4s infinite;
+    -moz-animation: pulse 4s infinite;
+    -o-animation: pulse 4s infinite;
+    animation: pulse 4s infinite;
+}
+
+@-moz-keyframes pulse {
+      0% {-moz-transform: scale(0.9, 0.9); opacity: 0.4;}
+     50% {opacity: 1.0;}
+    100% {-moz-transform: scale(1, 1); opacity: 0.4;}
+}
+
+@-webkit-keyframes pulse {
+      0% {-webkit-transform: scale(0.9, 0.9); opacity: 0.4;}
+     50% {opacity: 1.0;}
+    100% {-webkit-transform: scale(1, 1); opacity: 0.4;}
+}
+
+@keyframes pulse {
+      0% {scale: (0.9, 0.9); opacity: 0.4;}
+     50% {opacity: 1.0;}
+    100% {scale: (1, 1); opacity: 0.4;}
+}

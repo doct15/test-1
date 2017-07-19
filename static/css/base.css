@@ -1,0 +1,47 @@
+h1 {
+    color: #777777;
+}
+
+.wmd-panel{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.comment-reply{
+    display:none;
+}
+
+p.ProfileHeaderCard-bio.u-dir {
+  font-size: 1em !important;
+}
+
+
+
+
+
+.cta-free-trial{margin-top:-16px;padding:160px 0;width:100%;color:white;background-image:url("../images/svg/algolia-fast-bg-fe918a67.svg");background-size:cover;position:relative}
+.cta-free-trial .container{z-index:10}
+.cta-free-trial:before{content:'';display:block;position:absolute;width:100%;height:150px;background:white;-ms-transform:skewY(-6deg);transform:skewY(-6deg);z-index:0;top:-64px;left:0;z-index:0}
+
+@media (min-width: 1200px){
+  .cta-free-trial:before{-ms-transform:skewY(-3deg);transform:skewY(-3deg)}}
+
+@media (min-width: 2000px){
+
+  .cta-free-trial:before{top:-70px}}
+
+@media (max-width: 768px){
+
+  .cta-free-trial:before{display:none}}
+  .cta-free-trial h3{font-size:32px;color:white;font-weight:300}
+  .cta-free-trial p{font-size:18px;line-height:28px;color:white;font-weight:400}
+  .cta-free-trial .btn{float:right;clear:both}
+  .cta-free-trial .spacer24,
+  .cta-free-trial .spacer8{display:inline-block}
+  .cta-free-trial .link{clear:both;padding:8px 0 0;float:right;color:rgba(248,250,255,0.8);border-bottom:1px dashed rgba(255,255,255,0.6)}
+  .cta-free-trial .link:hover{text-decoration:none;color:#f8faff}
+
+@media (max-width: 992px){
+  .cta-free-trial{text-align:center}
+  .cta-free-trial .btn{float:none !important}
+  .cta-free-trial .link{float:none !important}}

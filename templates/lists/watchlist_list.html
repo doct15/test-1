@@ -1,0 +1,90 @@
+{% extends "base_fe.html" %}
+{% load urlify %}
+{% load crispy_forms_tags %}
+
+
+    <!-- ################################################################### -->
+    <!-- ## CONTENT BLOCK.                                                ## -->
+    <!-- ################################################################### -->
+    {% block main_title %}RadHR Watchlist{% endblock main_title %}
+    {% block main_subtitle %}Welcome to your Human Resource alert system.{% endblock main_subtitle %}
+
+    {% block content %}
+      <div class="block block-secondary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="text-uppercase">RadHR Watchlist.</h2>
+              <p>This is your RadHR Watchlist overview. It is the primary list of people we will monitor on your behalf.</p>
+              <p>For more details about a persons activity click on their profile.</p>
+              <button class="btn btn-info btn-lg mb-4" onclick="location.href='{% url "lists:create" %}'">+ Add to watchlist</button>
+
+              <!-- ## WATCHLIST SUMMARY TABLE.                ## -->
+              <table class="table table-hover mt-4">
+                <thead>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Title</th>
+                  <th>Twitter</th>
+                  <th>Profile</th>
+                </thead>
+                <tbody>
+                {% for social_profile in social_profiles %}
+                  <tr>
+                    <td>{{ social_profile.first_name }}</td>
+                    <td>{{ social_profile.last_name }}</td>
+                    <td>{{ social_profile.title }}</td>
+                    <td>{{ social_profile.twitter }}</td>
+                    <td>{{ social_profile.handle }}</td>
+                    <td><a href="{% url 'lists:detail' slug=social_profile.slug %}" role="button"><i class="la la-external-link-square la-2x btn-outline-success"></i></a></td>
+                    {{ social_profile.get_markdown|truncatechars_html:120 }}
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ################################################################### -->
+      <!-- ## PAGINATION BLOCK: LARGE WATCHLISTS.                           ## -->
+      <!-- ################################################################### -->
+      {% if social_profiles.has_other_pages %}
+      <div class="block block-pagination">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <span class="step-links">
+                  {% if social_profiles.has_previous %}
+                      <a href="?{{ page_request_var }}={{ social_profiles.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
+                  {% endif %}
+                  <span class="current">
+                    Page {{ social_profiles.number }} of {{ social_profiles.paginator.num_pages }}.
+                  </span>
+                  {% if social_profiles.has_next %}
+                      <a href="?{{ page_request_var }}={{ social_profiles.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
+                  {% endif %}
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!--
+      <form method='GET' action='' class='row'>
+              <div class='col-sm-6'>
+                  <div class='input-group'>
+                      <input class='form-control' type='text' name='q' placeholder='Search Peeps' value='{{ request.GET.q }}'/>
+                      <span class='input-group-btn'>
+                          <button class='btn btn-default' type='submit'>Search <i class="fa fa-search"></i></button>
+                      </span>
+                  </div>
+              </div>
+      </form>
+      -->
+
+    {% endblock content %}

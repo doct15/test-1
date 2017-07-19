@@ -1,0 +1,54 @@
+{% extends "base_fe.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load wagtailimages_tags %}
+
+    <!-- ################################################################### -->
+    <!-- ## META: HEAD TITLE                                              ## -->
+    <!-- ################################################################### -->
+
+    <!-- ################################################################### -->
+    <!-- ## CONTENT: DETAIL VIEW                                          ## -->
+    <!-- ################################################################### -->
+
+    {% block content %}
+        {% include "core/includes/hero.html" with hero=self.hero only %}
+        {% include "core/includes/intro.html" with intro=self.intro only %}
+        {% include "core/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+
+        <div class="block block-secondary app-iphone-block">
+          <div class="container">
+            <div class="row">
+              {% if self.body %}
+                  {% include "core/includes/streamfield.html" with content=self.body %}
+              {% endif %}
+
+            </div>
+
+          </div>
+        </div>
+
+        {% include "core/includes/related_links.html" with related_links=self.related_links.all only %}
+        {% include "core/tags/adverts.html" %}
+        {# {% include "core/tags/feature_companies.html" %}#}
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+    <!-- ################################################################### -->
+    <!-- ## ADVERT:                                                       ## -->
+    <!-- ################################################################### -->
+    {# {% for advert in adverts %}
+    <p>
+        <a href="{{ advert.url }}">
+            {{ advert.text }}
+        </a>
+    </p>
+    {% endfor %}#}

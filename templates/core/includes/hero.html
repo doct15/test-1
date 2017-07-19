@@ -1,0 +1,19 @@
+{% load wagtailcore_tags %}
+{% load static %}
+
+    <!-- ################################################################### -->
+    <!-- ## HERO SECTION                                                  ## -->
+    <!-- ################################################################### -->
+    <div class="block block-fill-height app-header" style="background-image: url({% static 'img/hero-001.jpg' %});">
+      <div class="block-xs-middle">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10 col-lg-8">
+              <h1>Know when key staff are looking.</h1>
+              <p class="lead mb-4 text-muted">Smart companies understand career movement and stay alert to key changes in staff behaviour.</p>
+              <button class="btn btn-success btn-lg" onclick="location.href='{% url 'account_login' %}'">Try RadHR now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

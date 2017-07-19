@@ -1,0 +1,196 @@
+{% load wagtailcore_tags %}
+{% load static %}
+{% load staticfiles %}
+{% load wagtailimages_tags %}
+{% load wagtailuserbar %}
+{% load user_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- ################################################################### -->
+    <!-- ## META ATTRIBUTES                                               ## -->
+    <!-- ################################################################### -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>{% block head_title %}RadHR{% endblock head_title %}</title>
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
+
+    <!-- ################################################################### -->
+    <!-- ## IMPORT STYLESHEETS                                            ## -->
+    <!-- ################################################################### -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/line-awesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/open-sans/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/montserrat/styles.css' %}">
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN THEME STYLES -->
+    <link href="{% static 'css/themes/toolkit-minimal.css' %}" rel="stylesheet">
+    <link href="{% static 'css/themes/application-minimal.css' %}" rel="stylesheet">
+    <link rel='stylesheet' href='{% static "css/base.css" %}' />
+
+    <!-- END THEME STYLES -->
+
+    <style>
+    {% block style %}{% endblock style %}
+    </style>
+
+    <!-- ################################################################### -->
+    <!-- ## HACKD: IOS IFRAME FOR BOOTSTRAP 4                             ## -->
+    <!-- ################################################################### -->
+    <style>
+      @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+        body {
+          width: 1px;
+          min-width: 100%;
+          *width: 100%;
+        }
+        #stage {
+          height: 1px;
+          overflow: auto;
+          min-height: 100vh;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    </style>
+
+    {% block head_extra %} {% endblock head_extra %}
+
+  </head>
+
+
+  <!-- ##################################################################### -->
+  <!-- ## BODY SECTION                                                    ## -->
+  <!-- ##################################################################### -->
+  <body>
+
+    <!-- ################################################################### -->
+    <!-- ## DJANGO ALLAUTH: SOCIAL LOGIN REQUIREMENTS                     ## -->
+    <!-- ################################################################### -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <!-- ################################################################### -->
+    <!-- ## MENU NAVIGATION: TOP NAV                                      ## -->
+    <!-- ################################################################### -->
+    {% block menu %}
+        {% include "core/tags/top_nav.html" %}
+
+    {% endblock %}
+
+    <!-- ## END: MENU NAVIGATION.                                         ## -->
+
+
+    <!-- ################################################################### -->
+    <!-- ## MAIN CONTENT SECTION                                          ## -->
+    <!-- ################################################################### -->
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- ## END: MAIN CONTENT SECTION.                                    ## -->
+
+
+    <!-- ################################################################### -->
+    <!-- ## FOOTER SECTION                                                ## -->
+    <!-- ################################################################### -->
+    {% block footer %}
+      {% include "core/tags/footer.html" %}
+      {% wagtailuserbar %}
+
+    {% endblock footer %}
+
+    <!-- ## END: FOOTER SECTION.                                          ## -->
+
+
+
+    <!-- ################################################################### -->
+    <!-- ## IMPORT JAVASCRIPT                                             ## -->
+    <!-- ################################################################### -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="{% static 'scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'scripts/tether.min.js' %}"></script>
+    <script src="{% static 'scripts/toolkit.js' %}"></script>
+    <script src="{% static 'scripts/application.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
+
+
+    <!-- ## GOOGLE ANALYTICS TRACKING CODE.                               ## -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98998242-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- ## DJANGO CUSTOM SCRIPTS.                                        ## -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".content-markdown").each(function(){
+                var content = $(this).text()
+                var markedContent = marked(content)
+                $(this).html(markedContent)
+        })
+        $(".post-detail-item img").each(function(){
+                $(this).addClass("img-responsive");
+        })
+
+        var contentInput = $("#id_content");
+        function setContent(value){
+            var markedContent = marked(value)
+            $("#preview-content").html(markedContent)
+            $("#preview-content img").each(function(){
+                $(this).addClass("img-responsive")
+            })
+        }
+        setContent(contentInput.val())
+        contentInput.keyup(function(){
+            var newContent = $(this).val()
+            setContent(newContent)
+        })
+        var titleInput = $("#id_title");
+
+        function setTitle(value) {
+            $("#preview-title").text(value)
+        }
+        setTitle(titleInput.val())
+        titleInput.keyup(function(){
+            var newContent = $(this).val()
+            setTitle(newContent)
+        })
+        $(".comment-reply-btn").click(function(event){
+            event.preventDefault();
+            $(this).parent().next(".comment-reply").fadeToggle();
+        })
+        // preview-title
+        // preview-content
+    })
+    </script>
+
+  </body>
+</html>
